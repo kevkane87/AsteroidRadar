@@ -56,6 +56,7 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
     private fun refreshDataFromRepository() {
         viewModelScope.launch {
             try {
+                repository.deletOldAsteroids()
                 repository.refreshAsteroids()
                 repository.refreshPictureOfDay()
                 _existFavourites = repository.checkFavourites()
